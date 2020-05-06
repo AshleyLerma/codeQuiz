@@ -28,3 +28,20 @@ when timer hits zero or 10 questions have been answered
 box to submit initials and submit score 
 
  */
+
+var timeEl = document.getElementById("time");
+var startQuizBtn = document.getElementById("startQuiz");
+
+var secondsLeft = 75;
+
+function setTime() {
+  var timerInterval = setInterval(function () {
+    secondsLeft = secondsLeft - 1;
+    timeEl.textContent = secondsLeft + " seconds left";
+    if (secondsLeft === 0) {
+      clearInterval(timerInterval);
+    }
+  }, 1000);
+}
+
+startQuizBtn.addEventListener("click", setTime);
