@@ -28,13 +28,14 @@ when timer hits zero or 10 questions have been answered
 box to submit initials and submit score 
 
  */
-
+var welcomeText = document.querySelector("#welcome");
 var timeEl = document.getElementById("time");
 var startQuizBtn = document.getElementById("startQuiz");
 
 var secondsLeft = 75;
 
-function setTime() {
+function startQuiz() {
+  // sets the interval timer
   var timerInterval = setInterval(function () {
     secondsLeft = secondsLeft - 1;
     timeEl.textContent = secondsLeft + " seconds left";
@@ -42,6 +43,8 @@ function setTime() {
       clearInterval(timerInterval);
     }
   }, 1000);
+  //   clears the  h1, p, and start button
+  welcomeText.style.display = "none";
 }
 
-startQuizBtn.addEventListener("click", setTime);
+startQuizBtn.addEventListener("click", startQuiz);
