@@ -25,6 +25,8 @@ var timeEl = document.getElementById("time");
 var startQuizBtn = document.getElementById("startQuiz");
 
 var secondsLeft = 75;
+var score = 0;
+var currentQuestion = 0;
 var questions = [
   // question one
   {
@@ -53,7 +55,7 @@ answerOptions.style.display = "none";
 function startQuiz() {
   // sets the interval timer
   var timerInterval = setInterval(function () {
-    secondsLeft = secondsLeft - 1;
+    secondsLeft--;
     timeEl.textContent = secondsLeft + " seconds left";
     if (secondsLeft === 0) {
       clearInterval(timerInterval);
@@ -61,24 +63,30 @@ function startQuiz() {
   }, 1000);
   //   clears the  h1, p, and start button
   welcomeText.style.display = "none";
+  // Popultate question and choices
+  var thisQuestion = questions[currentQuestion];
   // Shows the question
   questionEl.textContent = questions[0].question;
   // Shows the answer choices
   answerOptions.style.display = "block";
-  choice1.textContent = questions[0].choices[0];
-  choice2.textContent = questions[0].choices[1];
-  choice3.textContent = questions[0].choices[2];
-  choice4.textContent = questions[0].choices[3];
+  choice1.textContent = thisQuestion.choices[0];
+  choice2.textContent = thisQuestion.choices[1];
+  choice3.textContent = thisQuestion.choices[2];
+  choice4.textContent = thisQuestion.choices[3];
 
   // Target the user selected button
   for (var i = 0; i < answerBtns.length; i++) {
     answerBtns[i].addEventListener("click", function userSelection(event) {
       event.stopPropagation();
-      // Check if correct
-      if (event.currentTarget.textContent === questions[0].answer) {
+      // If correct flash green and add point to score
+      if (event.currentTarget.textContent === thisQuestion.answer) {
         document.querySelector("body").style.backgroundColor = "green";
-      } else {
+        score++;
+      }
+      // If incorrect flash red and subtract 10 seconds
+      else {
         document.querySelector("body").style.backgroundColor = "red";
+        secondsLeft = secondsLeft - 10;
       }
     });
   }
