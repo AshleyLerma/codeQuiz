@@ -11,8 +11,11 @@ when timer hits zero or 10 questions have been answered
 
 box to submit initials and submit score 
  */
+
+// Variables
 var questionEl = document.querySelector("h2");
-var answerBtns = document.querySelector(".answerButtons");
+var answerOptions = document.querySelector(".answerOptions");
+var answerBtns = document.querySelectorAll(".answerButtons");
 var choice1 = document.getElementById("choice0");
 var choice2 = document.getElementById("choice1");
 var choice3 = document.getElementById("choice2");
@@ -26,25 +29,27 @@ var questions = [
   // question one
   {
     question: "Question One",
-    choices: ["choice1", "choice2", "choice3", "choice4"],
-    answer: 1,
+    choices: ["answer1", "answer2", "answer3", "answer4"],
+    answer: "answer1",
   },
   // question two
   {
     question: "Question Two",
-    choices: ["choice1", "choice2", "choice3", "choice4"],
-    answer: 2,
+    choices: ["answer1", "answer2", "answer3", "answer4"],
+    answer: "answer4",
   },
   // question three
   {
     question: "Question Three",
-    choices: ["choice1", "choice2", "choice3", "choice4"],
-    answer: 0,
+    choices: ["answer1", "answer2", "answer3", "answer4"],
+    answer: "answer3",
   },
 ];
 
-answerBtns.style.display = "none";
+// hides buttons on starter screen
+answerOptions.style.display = "none";
 
+// Start Quiz function
 function startQuiz() {
   // sets the interval timer
   var timerInterval = setInterval(function () {
@@ -56,12 +61,27 @@ function startQuiz() {
   }, 1000);
   //   clears the  h1, p, and start button
   welcomeText.style.display = "none";
+  // Shows the question
   questionEl.textContent = questions[0].question;
-  answerBtns.style.display = "block";
+  // Shows the answer choices
+  answerOptions.style.display = "block";
   choice1.textContent = questions[0].choices[0];
   choice2.textContent = questions[0].choices[1];
   choice3.textContent = questions[0].choices[2];
   choice4.textContent = questions[0].choices[3];
-}
 
+  // Target the user selected button
+  for (var i = 0; i < answerBtns.length; i++) {
+    answerBtns[i].addEventListener("click", function userSelection(event) {
+      event.stopPropagation();
+      // Check if correct
+      if (event.currentTarget.textContent === questions[0].answer) {
+        document.querySelector("body").style.backgroundColor = "green";
+      } else {
+        document.querySelector("body").style.backgroundColor = "red";
+      }
+    });
+  }
+}
+// When start button is clicked trigger the startQuiz function
 startQuizBtn.addEventListener("click", startQuiz);
