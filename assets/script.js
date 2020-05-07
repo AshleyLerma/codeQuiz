@@ -1,20 +1,4 @@
 /*
-
-starter JS
-    variables 
-        element variables
-        timer element
-    
-    time interval function
-
-when button is cicked -
-    75 second timer starts
-    question screen
-        h3 Question 1 
-        answer button 1 
-        answer button 2 
-        answer button 3
-        answer button 4
 when answer button is selected 
     -screen background color will flash red if wrong or green if correct for 1 second 
     -if answer is correct +1 point to score 
@@ -26,11 +10,14 @@ when timer hits zero or 10 questions have been answered
     -h2 Your Final Score is *score*
 
 box to submit initials and submit score 
-
  */
 var questionEl = document.querySelector("h2");
 var answerBtns = document.querySelector(".answerButtons");
-var welcomeText = document.querySelector("#welcome");
+var choice1 = document.getElementById("choice0");
+var choice2 = document.getElementById("choice1");
+var choice3 = document.getElementById("choice2");
+var choice4 = document.getElementById("choice3");
+var welcomeText = document.getElementById("welcome");
 var timeEl = document.getElementById("time");
 var startQuizBtn = document.getElementById("startQuiz");
 
@@ -71,6 +58,10 @@ function startQuiz() {
   welcomeText.style.display = "none";
   questionEl.textContent = questions[0].question;
   answerBtns.style.display = "block";
+  choice1.textContent = questions[0].choices[0];
+  choice2.textContent = questions[0].choices[1];
+  choice3.textContent = questions[0].choices[2];
+  choice4.textContent = questions[0].choices[3];
 }
 
 startQuizBtn.addEventListener("click", startQuiz);
