@@ -47,9 +47,14 @@ var questions = [
     answer: "answer3",
   },
 ];
+// Populate question and choices
+var thisQuestion = questions[qIndex];
 
 // hides buttons on starter screen
 answerOptions.style.display = "none";
+
+// When start button is clicked trigger the startQuiz function
+startQuizBtn.addEventListener("click", startQuiz);
 
 // Start Quiz function
 function startQuiz() {
@@ -65,9 +70,6 @@ function startQuiz() {
   //   clears the  h1, p, and start button
   welcomeText.style.display = "none";
 
-  // Populate question and choices
-  var thisQuestion = questions[qIndex];
-
   // Shows the question
   questionEl.textContent = thisQuestion.question;
 
@@ -78,6 +80,12 @@ function startQuiz() {
   choice3.textContent = thisQuestion.choices[2];
   choice4.textContent = thisQuestion.choices[3];
 
+  // Check user answer
+  checkAnswer();
+}
+
+// Check Answer Function
+function checkAnswer() {
   // Target the user selected button
   for (var i = 0; i < answerBtns.length; i++) {
     answerBtns[i].addEventListener("click", function userSelection() {
@@ -94,5 +102,3 @@ function startQuiz() {
     });
   }
 }
-// When start button is clicked trigger the startQuiz function
-startQuizBtn.addEventListener("click", startQuiz);
