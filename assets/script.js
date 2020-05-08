@@ -1,9 +1,4 @@
 /*
-when answer button is selected 
-    -screen background color will flash red if wrong or green if correct for 1 second 
-    -if answer is correct +1 point to score 
-    -if answer is wrong -10seconds from remaining time 
-
 repeat with up to 10 questions 
 when timer hits zero or 10 questions have been answered 
     -h1 Game Over 
@@ -121,8 +116,10 @@ function startTimer() {
     secondsLeft--;
     timeEl.textContent = secondsLeft + " seconds left";
     // if time hits 0 stop
-    if (secondsLeft <= 0) {
+    if (secondsLeft <= 0 || qIndex > questions.length) {
       clearInterval(timerInterval);
+      quizText.style.display = "none";
+      timeEl.style.display = "none";
     }
   }, 1000);
 }
@@ -156,7 +153,13 @@ for (var i = 0; i < answerBtns.length; i++) {
     }
     // Add 1 to index to set up next question
     qIndex++;
-    // Show next question
-    nextQuestion();
+
+    if (qIndex < questions.length && secondsLeft > 0) {
+      // Show next question
+      nextQuestion();
+    } else {
+      quizText.style.display = "none";
+      timeEl.style.display = "none";
+    }
   });
 }
