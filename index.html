@@ -13,6 +13,8 @@
       <!-- Timer -->
       <h3 id="time"></h3>
       <!-- Content -->
+
+      <!-- This is the starting screen text -->
       <div id="welcome">
         <h1>Welcome to Code Quiz</h1>
         <p>
@@ -24,14 +26,20 @@
         <button id="startQuiz">Start Quiz</button>
       </div>
 
-      <!-- This is a blank element that will be used to hold the question as text content  -->
+      <!-- This is a blank div that will be used to hold the question choices and correct/incorrect  -->
       <div id="quizText">
-        <h2 class="question"></h2>
+        <h2 id="question"></h2>
         <button id="choice0" class="answerButtons"></button>
         <button id="choice1" class="answerButtons"></button>
         <button id="choice2" class="answerButtons"></button>
         <button id="choice3" class="answerButtons"></button>
         <h3 id="rightOrWrong"></h3>
+      </div>
+
+      <!-- This is the End of Quiz Text -->
+      <div id="allDone">
+        <h2>All done!</h2>
+        <h3 id="finalScore"></h3>
       </div>
 
       <!--Quiz Container /  -->

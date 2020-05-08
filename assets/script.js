@@ -1,5 +1,4 @@
 /*
-repeat with up to 10 questions 
 when timer hits zero or 10 questions have been answered 
     -h1 Game Over 
     -h2 Your Final Score is *score*
@@ -8,23 +7,28 @@ box to submit initials and submit score
  */
 
 // Variables
-var questionEl = document.querySelector("h2");
-var quizText = document.querySelector("#quizText");
 var answerBtns = document.querySelectorAll(".answerButtons");
+var questionEl = document.getElementById("question");
 var choice1 = document.getElementById("choice0");
 var choice2 = document.getElementById("choice1");
 var choice3 = document.getElementById("choice2");
 var choice4 = document.getElementById("choice3");
 var welcomeText = document.getElementById("welcome");
+var quizText = document.getElementById("quizText");
+var allDone = document.getElementById("allDone");
 var startQuizBtn = document.getElementById("startQuiz");
 var rightOrWrong = document.getElementById("rightOrWrong");
+
+// score variables
+var scoreEl = document.getElementById("finalScore");
+var score = 0;
+scoreEl.textContent = "Your final score is: " + score;
 
 // time variables
 var timeEl = document.getElementById("time");
 var secondsLeft = 75;
 timeEl.textContent = secondsLeft + " seconds left";
 
-var score = 0;
 var questions = [
   // question one
   {
@@ -93,6 +97,7 @@ var thisQuestion = questions[qIndex];
 
 // Hides quiz text on starter screen
 quizText.style.display = "none";
+allDone.style.display = "none";
 
 // When start button is clicked trigger the startQuiz function
 startQuizBtn.addEventListener("click", startQuiz);
@@ -120,6 +125,7 @@ function startTimer() {
       clearInterval(timerInterval);
       quizText.style.display = "none";
       timeEl.style.display = "none";
+      allDone.style.display = "block";
     }
   }, 1000);
 }
@@ -160,6 +166,7 @@ for (var i = 0; i < answerBtns.length; i++) {
     } else {
       quizText.style.display = "none";
       timeEl.style.display = "none";
+      allDone.style.display = "block";
     }
   });
 }
