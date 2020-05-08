@@ -14,7 +14,7 @@ box to submit initials and submit score
 
 // Variables
 var questionEl = document.querySelector("h2");
-var answerOptions = document.querySelector(".answerOptions");
+var quizText = document.querySelector("#quizText");
 var answerBtns = document.querySelectorAll(".answerButtons");
 var choice1 = document.getElementById("choice0");
 var choice2 = document.getElementById("choice1");
@@ -23,6 +23,7 @@ var choice4 = document.getElementById("choice3");
 var welcomeText = document.getElementById("welcome");
 var timeEl = document.getElementById("time");
 var startQuizBtn = document.getElementById("startQuiz");
+var rightOrWrong = document.getElementById("rightOrWrong");
 
 var secondsLeft = 75;
 var score = 0;
@@ -51,7 +52,7 @@ var questions = [
 var thisQuestion = questions[qIndex];
 
 // hides buttons on starter screen
-answerOptions.style.display = "none";
+quizText.style.display = "none";
 
 // When start button is clicked trigger the startQuiz function
 startQuizBtn.addEventListener("click", startQuiz);
@@ -69,19 +70,31 @@ function startQuiz() {
 
   //   clears the  h1, p, and start button
   welcomeText.style.display = "none";
+  // Shows answer choice buttons
+  quizText.style.display = "block";
 
+  // Populate First question
+  nextQuestion();
+
+  // Check user answer
+  checkAnswer();
+
+  qIndex++;
+
+  // prompt next question
+  nextQuestion();
+}
+
+// Question populate
+function nextQuestion() {
   // Shows the question
   questionEl.textContent = thisQuestion.question;
 
   // Shows the answer choices
-  answerOptions.style.display = "block";
   choice1.textContent = thisQuestion.choices[0];
   choice2.textContent = thisQuestion.choices[1];
   choice3.textContent = thisQuestion.choices[2];
   choice4.textContent = thisQuestion.choices[3];
-
-  // Check user answer
-  checkAnswer();
 }
 
 // Check Answer Function
@@ -91,12 +104,12 @@ function checkAnswer() {
     answerBtns[i].addEventListener("click", function userSelection() {
       // If correct flash green and add point to score
       if (event.currentTarget.textContent === thisQuestion.answer) {
-        document.querySelector("body").style.backgroundColor = "green";
+        rightOrWrong.textContent = "Correct!";
         score++;
       }
       // If incorrect flash red and subtract 10 seconds
       else {
-        document.querySelector("body").style.backgroundColor = "red";
+        rightOrWrong.textContent = "Incorrect";
         secondsLeft = secondsLeft - 10;
       }
     });
