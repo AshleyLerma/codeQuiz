@@ -26,7 +26,7 @@ var startQuizBtn = document.getElementById("startQuiz");
 
 var secondsLeft = 75;
 var score = 0;
-var currentQuestion = 0;
+var qIndex = 0;
 var questions = [
   // question one
   {
@@ -64,9 +64,9 @@ function startQuiz() {
   //   clears the  h1, p, and start button
   welcomeText.style.display = "none";
   // Popultate question and choices
-  var thisQuestion = questions[currentQuestion];
+  var thisQuestion = questions[qIndex];
   // Shows the question
-  questionEl.textContent = questions[0].question;
+  questionEl.textContent = thisQuestion.question;
   // Shows the answer choices
   answerOptions.style.display = "block";
   choice1.textContent = thisQuestion.choices[0];
