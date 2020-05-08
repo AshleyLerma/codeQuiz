@@ -40,14 +40,56 @@ var questions = [
   // question two
   {
     question: "Question Two",
-    choices: ["answer1", "answer2", "answer3", "answer4"],
-    answer: "answer4",
+    choices: ["choice1", "choice2", "choice3", "choice4"],
+    answer: "choice4",
   },
   // question three
   {
     question: "Question Three",
     choices: ["answer1", "answer2", "answer3", "answer4"],
     answer: "answer3",
+  },
+  // question four
+  {
+    question: "Question Four",
+    choices: ["choice1", "choice2", "choice3", "choice4"],
+    answer: "choice2",
+  },
+  // question five
+  {
+    question: "Question Five",
+    choices: ["answer1", "answer2", "answer3", "answer4"],
+    answer: "answer4",
+  },
+  // question six
+  {
+    question: "Question Six",
+    choices: ["choice1", "choice2", "choice3", "choice4"],
+    answer: "choice2",
+  },
+  // question seven
+  {
+    question: "Question Seven",
+    choices: ["answer1", "answer2", "answer3", "answer4"],
+    answer: "answer3",
+  },
+  // question eight
+  {
+    question: "Question Eight",
+    choices: ["choice1", "choice2", "choice3", "choice4"],
+    answer: "choice1",
+  },
+  // question nine
+  {
+    question: "Question Nine",
+    choices: ["answer1", "answer2", "answer3", "answer4"],
+    answer: "answer2",
+  },
+  // question ten
+  {
+    question: "Question Ten",
+    choices: ["choice1", "choice2", "choice3", "choice4"],
+    answer: "choice4",
   },
 ];
 // Grab question and choices based on index starting at zero
@@ -72,22 +114,6 @@ function startQuiz() {
   nextQuestion();
 }
 
-// Function to populate the question
-function nextQuestion() {
-  // Shows the question
-  thisQuestion = questions[qIndex];
-  questionEl.textContent = thisQuestion.question;
-
-  // Shows the answer choices
-  choice1.textContent = thisQuestion.choices[0];
-  choice2.textContent = thisQuestion.choices[1];
-  choice3.textContent = thisQuestion.choices[2];
-  choice4.textContent = thisQuestion.choices[3];
-
-  // Check user answer
-  checkAnswer();
-}
-
 // Start Timer Function
 function startTimer() {
   // sets the interval timer
@@ -101,25 +127,36 @@ function startTimer() {
   }, 1000);
 }
 
-// Check Answer Function
-function checkAnswer() {
-  // Target the user selected button
-  for (var i = 0; i < answerBtns.length; i++) {
-    answerBtns[i].addEventListener("click", function userSelection() {
-      // If correct flash green and add point to score
-      if (event.currentTarget.textContent === thisQuestion.answer) {
-        rightOrWrong.textContent = "Correct!";
-        score++;
-      }
-      // If incorrect flash red and subtract 10 seconds
-      else {
-        rightOrWrong.textContent = "Incorrect";
-        secondsLeft = secondsLeft - 10;
-      }
-      // Add 1 to index to set up next question
-      qIndex++;
+// Function to populate the question
+function nextQuestion() {
+  // Shows the question
+  thisQuestion = questions[qIndex];
+  questionEl.textContent = thisQuestion.question;
 
-      nextQuestion();
-    });
-  }
+  // Shows the answer choices
+  choice1.textContent = thisQuestion.choices[0];
+  choice2.textContent = thisQuestion.choices[1];
+  choice3.textContent = thisQuestion.choices[2];
+  choice4.textContent = thisQuestion.choices[3];
+}
+// Sequence to check answer
+
+// Target the user selected button
+for (var i = 0; i < answerBtns.length; i++) {
+  answerBtns[i].addEventListener("click", function userSelection() {
+    // If correct flash green and add point to score
+    if (event.currentTarget.textContent === thisQuestion.answer) {
+      rightOrWrong.textContent = "Correct!";
+      score++;
+    }
+    // If incorrect flash red and subtract 10 seconds
+    else {
+      rightOrWrong.textContent = "Incorrect";
+      secondsLeft = secondsLeft - 10;
+    }
+    // Add 1 to index to set up next question
+    qIndex++;
+    // Show next question
+    nextQuestion();
+  });
 }
