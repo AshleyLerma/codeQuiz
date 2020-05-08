@@ -21,13 +21,15 @@ var choice2 = document.getElementById("choice1");
 var choice3 = document.getElementById("choice2");
 var choice4 = document.getElementById("choice3");
 var welcomeText = document.getElementById("welcome");
-var timeEl = document.getElementById("time");
 var startQuizBtn = document.getElementById("startQuiz");
 var rightOrWrong = document.getElementById("rightOrWrong");
 
+// time variables
+var timeEl = document.getElementById("time");
 var secondsLeft = 75;
+timeEl.textContent = secondsLeft + " seconds left";
+
 var score = 0;
-var qIndex = 0;
 var questions = [
   // question one
   {
@@ -48,10 +50,11 @@ var questions = [
     answer: "answer3",
   },
 ];
-// Populate question and choices
+// Grab question and choices based on index starting at zero
+var qIndex = 0;
 var thisQuestion = questions[qIndex];
 
-// hides buttons on starter screen
+// Hides quiz text on starter screen
 quizText.style.display = "none";
 
 // When start button is clicked trigger the startQuiz function
@@ -59,35 +62,20 @@ startQuizBtn.addEventListener("click", startQuiz);
 
 // Start Quiz function
 function startQuiz() {
-  // sets the interval timer
-  var timerInterval = setInterval(function () {
-    secondsLeft--;
-    timeEl.textContent = secondsLeft + " seconds left";
-    if (secondsLeft === 0) {
-      clearInterval(timerInterval);
-    }
-  }, 1000);
-
+  // starts timer
+  startTimer();
   //   clears the  h1, p, and start button
   welcomeText.style.display = "none";
   // Shows answer choice buttons
   quizText.style.display = "block";
 
-  // Populate First question
-  nextQuestion();
-
-  // Check user answer
-  checkAnswer();
-
-  qIndex++;
-
-  // prompt next question
   nextQuestion();
 }
 
-// Question populate
+// Function to populate the question
 function nextQuestion() {
   // Shows the question
+  thisQuestion = questions[qIndex];
   questionEl.textContent = thisQuestion.question;
 
   // Shows the answer choices
@@ -95,6 +83,22 @@ function nextQuestion() {
   choice2.textContent = thisQuestion.choices[1];
   choice3.textContent = thisQuestion.choices[2];
   choice4.textContent = thisQuestion.choices[3];
+
+  // Check user answer
+  checkAnswer();
+}
+
+// Start Timer Function
+function startTimer() {
+  // sets the interval timer
+  var timerInterval = setInterval(function () {
+    secondsLeft--;
+    timeEl.textContent = secondsLeft + " seconds left";
+    // if time hits 0 stop
+    if (secondsLeft <= 0) {
+      clearInterval(timerInterval);
+    }
+  }, 1000);
 }
 
 // Check Answer Function
@@ -112,6 +116,10 @@ function checkAnswer() {
         rightOrWrong.textContent = "Incorrect";
         secondsLeft = secondsLeft - 10;
       }
+      // Add 1 to index to set up next question
+      qIndex++;
+
+      nextQuestion();
     });
   }
 }
