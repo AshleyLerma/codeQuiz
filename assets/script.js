@@ -40,8 +40,8 @@ var questions = [
   // question two
   {
     question: "Question Two",
-    choices: ["answer1", "answer2", "answer3", "answer4"],
-    answer: "answer4",
+    choices: ["choice1", "choice2", "choice3", "choice4"],
+    answer: "choice4",
   },
   // question three
   {
@@ -72,6 +72,19 @@ function startQuiz() {
   nextQuestion();
 }
 
+// Start Timer Function
+function startTimer() {
+  // sets the interval timer
+  var timerInterval = setInterval(function () {
+    secondsLeft--;
+    timeEl.textContent = secondsLeft + " seconds left";
+    // if time hits 0 stop
+    if (secondsLeft <= 0) {
+      clearInterval(timerInterval);
+    }
+  }, 1000);
+}
+
 // Function to populate the question
 function nextQuestion() {
   // Shows the question
@@ -86,19 +99,6 @@ function nextQuestion() {
 
   // Check user answer
   checkAnswer();
-}
-
-// Start Timer Function
-function startTimer() {
-  // sets the interval timer
-  var timerInterval = setInterval(function () {
-    secondsLeft--;
-    timeEl.textContent = secondsLeft + " seconds left";
-    // if time hits 0 stop
-    if (secondsLeft <= 0) {
-      clearInterval(timerInterval);
-    }
-  }, 1000);
 }
 
 // Check Answer Function
