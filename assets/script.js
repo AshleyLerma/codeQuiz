@@ -61,12 +61,16 @@ function startQuiz() {
       clearInterval(timerInterval);
     }
   }, 1000);
+
   //   clears the  h1, p, and start button
   welcomeText.style.display = "none";
-  // Popultate question and choices
+
+  // Populate question and choices
   var thisQuestion = questions[qIndex];
+
   // Shows the question
   questionEl.textContent = thisQuestion.question;
+
   // Shows the answer choices
   answerOptions.style.display = "block";
   choice1.textContent = thisQuestion.choices[0];
@@ -76,8 +80,7 @@ function startQuiz() {
 
   // Target the user selected button
   for (var i = 0; i < answerBtns.length; i++) {
-    answerBtns[i].addEventListener("click", function userSelection(event) {
-      event.stopPropagation();
+    answerBtns[i].addEventListener("click", function userSelection() {
       // If correct flash green and add point to score
       if (event.currentTarget.textContent === thisQuestion.answer) {
         document.querySelector("body").style.backgroundColor = "green";
