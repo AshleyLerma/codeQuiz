@@ -10,6 +10,7 @@ var quizText = document.getElementById("quizText");
 var allDone = document.getElementById("allDone");
 var startQuizBtn = document.getElementById("startQuiz");
 var rightOrWrong = document.getElementById("rightOrWrong");
+var retakeBtn = document.getElementById("takeAgain");
 
 // score variables
 var scoreEl = document.getElementById("finalScore");
@@ -208,4 +209,10 @@ function renderHighScores() {
     li.textContent = highScore;
     currentList.appendChild(li);
   }
+}
+
+retakeBtn.addEventListener("click", retakeQuiz);
+
+function retakeQuiz() {
+  window.location.reload();
 }
