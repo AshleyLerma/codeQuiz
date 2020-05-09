@@ -43,16 +43,22 @@
       </div>
 
       <!-- This is a blank div that will be used to hold the question choices and correct/incorrect  -->
-      <div class="row" id="quizText">
-        <div class="col-12">
-          <h2 id="question"></h2>
-          <button id="choice0" class="answerButtons"></button>
-          <button id="choice1" class="answerButtons"></button>
-          <button id="choice2" class="answerButtons"></button>
-          <button id="choice3" class="answerButtons"></button>
+      <div id="quizText">
+        <div class="row">
+          <div class="col-12">
+            <h2 id="question"></h2>
+          </div>
+        </div>
+        <div id="choiceBtns" class="row">
+          <button id="choice0" class="col-5 answerButtons"></button>
+          <button id="choice1" class="col-5 answerButtons"></button>
+          <button id="choice2" class="col-5 answerButtons"></button>
+          <button id="choice3" class="col-5 answerButtons"></button>
+        </div>
+        <div class="row">
+          <hr />
           <h3 id="rightOrWrong"></h3>
         </div>
-      </div>
 
       <!-- This is the End of Quiz Text -->
       <div class="row" id="allDone">

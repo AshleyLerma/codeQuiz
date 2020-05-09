@@ -26,3 +26,29 @@ body {
 #instruct {
   margin-bottom: 30px;
 }
+
+#question {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#choiceBtns {
+  justify-content: center;
+}
+
+.answerButtons {
+  min-width: 200px;
+  margin: 10px;
+  background-color: #61605d;
+  color: white;
+  border-radius: 15px;
+}
+
+hr {
+  width: 100%;
+}
+
+#rightOrWrong {
+  font-size: medium;
+  font-style: italic;
+}
