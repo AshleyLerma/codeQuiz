@@ -49,3 +49,19 @@ hr {
   font-size: medium;
   font-style: italic;
 }
+
+#allDone {
+  text-align: center;
+}
+
+#allDoneText {
+  padding: 20px;
+}
+
+#finalScore {
+  font-size: medium;
+}
+
+#userNameInput {
+  margin: 20px;
+}
