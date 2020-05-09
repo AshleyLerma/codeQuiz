@@ -1,7 +1,3 @@
-/*
-box to submit initials and submit score 
- */
-
 // Variables
 var answerBtns = document.querySelectorAll(".answerButtons");
 var questionEl = document.getElementById("question");
@@ -20,14 +16,15 @@ var scoreEl = document.getElementById("finalScore");
 var score = 0;
 var saveScoreBtn = document.getElementById("saveScore");
 var userNameInput = document.getElementById("userNameInput");
-var highScores = [];
 var currentList = document.getElementById("currentList");
+var highScores = [];
 
 // time variables
 var timeEl = document.getElementById("time");
 var secondsLeft = 75;
 timeEl.textContent = secondsLeft + " seconds left";
 
+// All questions, choices and answers
 var questions = [
   // question one
   {
@@ -142,18 +139,18 @@ function nextQuestion() {
   choice3.textContent = thisQuestion.choices[2];
   choice4.textContent = thisQuestion.choices[3];
 }
-// Sequence to check answer
 
-// Target the user selected button
+// Target the user selected button/check answer
+
 for (var i = 0; i < answerBtns.length; i++) {
   answerBtns[i].addEventListener("click", function userSelection() {
-    // If correct flash green and add point to score
+    // If correct say so and add point to score
     if (event.currentTarget.textContent === thisQuestion.answer) {
       rightOrWrong.textContent = "Correct!";
       score++;
       scoreEl.textContent = "Your final score is: " + score;
     }
-    // If incorrect flash red and subtract 10 seconds
+    // If incorrect say incorrect and subtract 10 seconds
     else {
       rightOrWrong.textContent = "Incorrect";
       secondsLeft = secondsLeft - 10;
@@ -172,15 +169,13 @@ for (var i = 0; i < answerBtns.length; i++) {
   });
 }
 
+// ALL HIGHSCORE FUNCTIONS
+
 // save high score
 saveScoreBtn.addEventListener("click", function (event) {
   event.preventDefault();
 
   var userName = score + " - " + userNameInput.value.trim();
-
-  if (userName === "") {
-    return;
-  }
 
   highScores.push(userName);
   userNameInput.value = "";
@@ -189,28 +184,29 @@ saveScoreBtn.addEventListener("click", function (event) {
   getHighScores();
 });
 
-// Score high score in local storage
+// Store high score in local storage
 function storeHighScores() {
-  localStorage.setItem("storedNames", JSON.stringify(highScores));
+  localStorage.setItem("highScores", JSON.stringify(highScores));
 }
 
 // Retrieve past scores from local storage
 function getHighScores() {
-  var pastNames = JSON.parse(localStorage.getItem(highScores));
-  if (pastNames !== null) {
-    highScores = pastNames;
+  var storedNames = JSON.parse(localStorage.getItem("highScores"));
+  if (storedNames !== null) {
+    highScores = storedNames;
   }
-
   renderHighScores();
 }
 
 // Post highscore names to screen
 function renderHighScores() {
   currentList.innerHTML = "";
-  for (var listCount = 0; listCount < highScores.length; listCount++) {
-    var listName = highScores[listCount];
+
+  for (var hsIndex = 0; hsIndex < highScores.length; hsIndex++) {
+    var highScore = highScores[hsIndex];
+
     var li = document.createElement("li");
-    li.textContent = listName;
+    li.textContent = highScore;
     currentList.appendChild(li);
   }
 }
