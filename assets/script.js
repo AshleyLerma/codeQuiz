@@ -186,6 +186,7 @@ saveScoreBtn.addEventListener("click", function (event) {
 
   // Clear the input value
   userNameInput.value = "";
+  userNameInput.readOnly = true;
 
   getHighScores();
 });
