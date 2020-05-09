@@ -29,63 +29,78 @@ timeEl.textContent = secondsLeft + " seconds left";
 var questions = [
   // question one
   {
-    question: "Question One",
-    choices: ["answer1", "answer2", "answer3", "answer4"],
-    answer: "answer1",
+    question: "Who does Michael hit with his car?",
+    choices: ["Meredith", "Kelly", "Jim", "Angela"],
+    answer: "Meredith",
   },
   // question two
   {
-    question: "Question Two",
-    choices: ["choice1", "choice2", "choice3", "choice4"],
-    answer: "choice4",
+    question: "What movie does Jim think shouldn't be a desert island movie?",
+    choices: [
+      "Bring it On",
+      "Harry Potter",
+      "The Divinci Code",
+      "Legally Blonde",
+    ],
+    answer: "Legally Blonde",
   },
   // question three
   {
-    question: "Question Three",
-    choices: ["answer1", "answer2", "answer3", "answer4"],
-    answer: "answer3",
+    question: "Who does Dwight bring to the Dinner Party?",
+    choices: ["his wife", "his cousin", "his old babysitter", "no one"],
+    answer: "his old babysitter",
   },
   // question four
   {
-    question: "Question Four",
-    choices: ["choice1", "choice2", "choice3", "choice4"],
-    answer: "choice2",
+    question: "Where does Jim propose to Pam?",
+    choices: [
+      "the roof of Dunder Mifflin",
+      "a rest stop",
+      "the parking lot",
+      "he doesn't propose",
+    ],
+    answer: "a rest stop",
   },
   // question five
   {
-    question: "Question Five",
-    choices: ["answer1", "answer2", "answer3", "answer4"],
-    answer: "answer4",
+    question: "How long were Pam and Roy engaged?",
+    choices: ["6 months", "1 year", "8 weeks", "3 years"],
+    answer: "3 years",
   },
   // question six
   {
-    question: "Question Six",
-    choices: ["choice1", "choice2", "choice3", "choice4"],
-    answer: "choice2",
+    question: "What do they sell at Dunder Mifflin?",
+    choices: ["water coolers", "paper", "computers", "toys"],
+    answer: "paper",
   },
   // question seven
   {
-    question: "Question Seven",
-    choices: ["answer1", "answer2", "answer3", "answer4"],
-    answer: "answer3",
+    question: "What kind of pet does Angela have several of?",
+    choices: ["horses", "dogs", "cats", "mice"],
+    answer: "cats",
   },
   // question eight
   {
-    question: "Question Eight",
-    choices: ["choice1", "choice2", "choice3", "choice4"],
-    answer: "choice1",
+    question: "Where did Andy go to college?",
+    choices: ["Cornell", "Harvard", "University of Texas", "Princeton"],
+    answer: "Cornell",
   },
   // question nine
   {
-    question: "Question Nine",
-    choices: ["answer1", "answer2", "answer3", "answer4"],
-    answer: "answer2",
+    question: "What department does Toby work in?",
+    choices: ["Accounting", "HR", "Sales", "Reception"],
+    answer: "HR",
   },
   // question ten
   {
-    question: "Question Ten",
-    choices: ["choice1", "choice2", "choice3", "choice4"],
-    answer: "choice4",
+    question: "What is Dwight's title?",
+    choices: [
+      "Assistant Regional Manager",
+      "Front Office Manager",
+      "Big Boss",
+      "Assistant to the Regional Manager",
+    ],
+    answer: "Assistant to the Regional Manager",
   },
 ];
 
