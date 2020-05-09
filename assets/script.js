@@ -18,7 +18,6 @@ var rightOrWrong = document.getElementById("rightOrWrong");
 // score variables
 var scoreEl = document.getElementById("finalScore");
 var score = 0;
-scoreEl.textContent = "Your final score is: " + score;
 
 // time variables
 var timeEl = document.getElementById("time");
