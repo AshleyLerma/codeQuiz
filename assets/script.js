@@ -18,6 +18,10 @@ var rightOrWrong = document.getElementById("rightOrWrong");
 // score variables
 var scoreEl = document.getElementById("finalScore");
 var score = 0;
+var saveScoreBtn = document.getElementById("saveScore");
+var userNameInput = document.getElementById("userNameInput");
+var highScores = [];
+var currentList = document.getElementById("currentList");
 
 // time variables
 var timeEl = document.getElementById("time");
@@ -166,4 +170,47 @@ for (var i = 0; i < answerBtns.length; i++) {
       allDone.style.display = "block";
     }
   });
+}
+
+// save high score
+saveScoreBtn.addEventListener("click", function (event) {
+  event.preventDefault();
+
+  var userName = score + " - " + userNameInput.value.trim();
+
+  if (userName === "") {
+    return;
+  }
+
+  highScores.push(userName);
+  userNameInput.value = "";
+
+  storeHighScores();
+  getHighScores();
+});
+
+// Score high score in local storage
+function storeHighScores() {
+  localStorage.setItem("storedNames", JSON.stringify(highScores));
+}
+
+// Retrieve past scores from local storage
+function getHighScores() {
+  var pastNames = JSON.parse(localStorage.getItem(highScores));
+  if (pastNames !== null) {
+    highScores = pastNames;
+  }
+
+  renderHighScores();
+}
+
+// Post highscore names to screen
+function renderHighScores() {
+  currentList.innerHTML = "";
+  for (var listCount = 0; listCount < highScores.length; listCount++) {
+    var listName = highScores[listCount];
+    var li = document.createElement("li");
+    li.textContent = listName;
+    currentList.appendChild(li);
+  }
 }
