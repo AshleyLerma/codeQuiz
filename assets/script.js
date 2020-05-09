@@ -1,8 +1,4 @@
 /*
-when timer hits zero or 10 questions have been answered 
-    -h1 Game Over 
-    -h2 Your Final Score is *score*
-
 box to submit initials and submit score 
  */
 
@@ -151,6 +147,7 @@ for (var i = 0; i < answerBtns.length; i++) {
     if (event.currentTarget.textContent === thisQuestion.answer) {
       rightOrWrong.textContent = "Correct!";
       score++;
+      scoreEl.textContent = "Your final score is: " + score;
     }
     // If incorrect flash red and subtract 10 seconds
     else {
