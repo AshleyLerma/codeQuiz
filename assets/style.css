@@ -1,0 +1,28 @@
+body {
+  height: 100%;
+  margin: 0;
+  background-color: aqua;
+}
+
+.container {
+  background-color: azure;
+  padding: 50px;
+  margin: 50px auto;
+}
+
+#time {
+  font-size: small;
+  padding: 15px;
+  text-align: end;
+}
+
+#welcome {
+  text-align: center;
+}
+
+#welcomeTitle {
+  padding: 20px;
+}
+#instruct {
+  margin-bottom: 30px;
+}
