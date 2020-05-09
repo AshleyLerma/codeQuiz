@@ -39,9 +39,6 @@ body {
 .answerButtons {
   min-width: 200px;
   margin: 10px;
-  background-color: #61605d;
-  color: white;
-  border-radius: 15px;
 }
 
 hr {
