@@ -177,17 +177,17 @@ saveScoreBtn.addEventListener("click", function (event) {
 
   var userName = score + " - " + userNameInput.value.trim();
 
+  // Add current score to highScores Array
   highScores.push(userName);
+
+  // Add highScores to local storage as a JSON array
+  localStorage.setItem("highScores", JSON.stringify(highScores));
+
+  // Clear the input value
   userNameInput.value = "";
 
-  storeHighScores();
   getHighScores();
 });
-
-// Store high score in local storage
-function storeHighScores() {
-  localStorage.setItem("highScores", JSON.stringify(highScores));
-}
 
 // Retrieve past scores from local storage
 function getHighScores() {
@@ -201,7 +201,6 @@ function getHighScores() {
 // Post highscore names to screen
 function renderHighScores() {
   currentList.innerHTML = "";
-
   for (var hsIndex = 0; hsIndex < highScores.length; hsIndex++) {
     var highScore = highScores[hsIndex];
 
