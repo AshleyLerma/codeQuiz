@@ -5,50 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Office Quiz</title>
     <!-- CSS -->
+    <link rel="stylesheet" href="assets/reset.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="assets/style.css" />
   </head>
   <body>
     <!--Quiz Container  -->
     <main class="container">
       <!-- Timer -->
-      <h3 id="time"></h3>
+      <div class="row">
+        <div class="col-12">
+          <h3 id="time"></h3>
+        </div>
+      </div>
       <!-- Content -->
 
       <!-- This is the starting screen text -->
-      <div id="welcome">
-        <h1>Welcome to The Office Quiz</h1>
-        <p>
-          This is a 10 question quiz. You will have 75 seconds to answer as many
-          questions as possible. If you get an answer wrong, 10 seconds will be
-          deducted from your remaining time. Click the button below to begin!
-        </p>
-        <!-- This button will trigger the start of the quiz -->
-        <button id="startQuiz">Start Quiz</button>
+      <div class="row" id="welcome">
+        <div class="col-12">
+          <h1 id="welcomeTitle">The Office Quiz</h1>
+          <p id="instruct">
+            This is a 10 question quiz. You will have 75 seconds to answer as
+            many questions as possible. If you get an answer wrong, 10 seconds
+            will be deducted from your remaining time. Click the button below to
+            begin!
+          </p>
+          <!-- This button will trigger the start of the quiz -->
+          <button type="button" class="btn btn-secondary" id="startQuiz">
+            Start Quiz
+          </button>
+        </div>
       </div>
 
       <!-- This is a blank div that will be used to hold the question choices and correct/incorrect  -->
       <div id="quizText">
-        <h2 id="question"></h2>
-        <button id="choice0" class="answerButtons"></button>
-        <button id="choice1" class="answerButtons"></button>
-        <button id="choice2" class="answerButtons"></button>
-        <button id="choice3" class="answerButtons"></button>
-        <h3 id="rightOrWrong"></h3>
+        <div class="row">
+          <div class="col-12">
+            <h2 id="question"></h2>
+          </div>
+        </div>
+        <div id="choiceBtns" class="row">
+          <button
+            type="button"
+            id="choice0"
+            class="btn btn-secondary col-5 answerButtons"
+          ></button>
+          <button
+            type="button"
+            id="choice1"
+            class="btn btn-secondary col-5 answerButtons"
+          ></button>
+          <button
+            type="button"
+            id="choice2"
+            class="btn btn-secondary col-5 answerButtons"
+          ></button>
+          <button
+            type="button"
+            id="choice3"
+            class="btn btn-secondary col-5 answerButtons"
+          ></button>
+        </div>
+        <div class="row">
+          <hr />
+          <h3 id="rightOrWrong"></h3>
+        </div>
       </div>
 
       <!-- This is the End of Quiz Text -->
-      <div id="allDone">
-        <h2>All done!</h2>
-        <h3 id="finalScore"></h3>
+      <div class="row" id="allDone">
+        <div class="col-12">
+          <h2 id="allDoneText">All Done!</h2>
+          <h3 id="finalScore"></h3>
 
-        <form id="highScores">
-          <p>Enter your username to save your high score.</p>
-          <label for="userName">Username: </label>
-          <input id="userNameInput" />
-          <button id="saveScore">Save Score</button>
-          <button id="takeAgain">Retake Quiz</button>
-        </form>
-        <ul id="currentList"></ul>
+          <form id="highScores">
+            <p>Enter your name below to save your score.</p>
+            <input id="userNameInput" />
+            <br />
+            <button type="button" class="btn btn-secondary" id="saveScore">
+              Save Score
+            </button>
+            <button type="button" class="btn btn-secondary" id="takeAgain">
+              Retake Quiz
+            </button>
+          </form>
+          <hr />
+          <ul id="currentList"></ul>
+        </div>
       </div>
 
       <!--Quiz Container /  -->
