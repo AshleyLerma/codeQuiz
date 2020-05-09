@@ -86,6 +86,7 @@ var questions = [
     answer: "choice4",
   },
 ];
+
 // Grab question and choices based on index starting at zero
 var qIndex = 0;
 var thisQuestion = questions[qIndex];
