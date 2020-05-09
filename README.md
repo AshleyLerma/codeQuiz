@@ -2,6 +2,10 @@
 
 Homework 4
 
+![](assets/QuizShot.png)
+
+Take the quiz here : https://ashleylerma.github.io/codeQuiz/
+
 Create a Code Quiz
 
 - GIVEN I am taking a code quiz
