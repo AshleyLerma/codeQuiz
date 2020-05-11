@@ -193,6 +193,11 @@ saveScoreBtn.addEventListener("click", function (event) {
 
   var userName = score + " - " + userNameInput.value.trim();
 
+  var pastNames = JSON.parse(localStorage.getItem("highScores"));
+  if (pastNames !== null) {
+    highScores = pastNames;
+  }
+
   // Add current score to highScores Array
   highScores.push(userName);
 
