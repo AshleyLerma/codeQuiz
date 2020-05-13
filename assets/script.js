@@ -11,6 +11,7 @@ var allDone = document.getElementById("allDone");
 var startQuizBtn = document.getElementById("startQuiz");
 var rightOrWrong = document.getElementById("rightOrWrong");
 var retakeBtn = document.getElementById("takeAgain");
+var clearScoresBtn = document.getElementById("clearScores");
 
 // score variables
 var scoreEl = document.getElementById("finalScore");
@@ -232,6 +233,12 @@ function renderHighScores() {
     li.textContent = highScore;
     currentList.appendChild(li);
   }
+}
+
+clearScoresBtn.addEventListener("click", clearYourScores);
+
+function clearYourScores() {
+  localStorage.clear();
 }
 
 retakeBtn.addEventListener("click", retakeQuiz);
