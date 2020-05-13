@@ -11,6 +11,7 @@ var allDone = document.getElementById("allDone");
 var startQuizBtn = document.getElementById("startQuiz");
 var rightOrWrong = document.getElementById("rightOrWrong");
 var retakeBtn = document.getElementById("takeAgain");
+var clearScoresBtn = document.getElementById("clearScores");
 
 // score variables
 var scoreEl = document.getElementById("finalScore");
@@ -234,6 +235,17 @@ function renderHighScores() {
   }
 }
 
+// Clears scores
+clearScoresBtn.addEventListener("click", clearYourScores);
+
+function clearYourScores() {
+  // removes from local storage
+  localStorage.clear();
+  // removes current list
+  currentList.style.display = "none";
+}
+
+// Takes you back to welcome page
 retakeBtn.addEventListener("click", retakeQuiz);
 
 function retakeQuiz() {
