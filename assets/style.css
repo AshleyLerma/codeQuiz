@@ -36,6 +36,13 @@ body {
   justify-content: center;
 }
 
+.btn:focus,
+.btn:active {
+  outline: none !important;
+  box-shadow: none;
+  background-color: #6c757d !important;
+}
+
 .answerButtons {
   min-width: 200px;
   margin: 10px;
