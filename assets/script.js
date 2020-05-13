@@ -158,19 +158,21 @@ function nextQuestion() {
 
 // Target the user selected button/check answer
 
+// Adds event listener to each answe choice button
 for (var i = 0; i < answerBtns.length; i++) {
   answerBtns[i].addEventListener("click", function userSelection() {
     // If correct say so and add point to score
     if (event.currentTarget.textContent === thisQuestion.answer) {
       rightOrWrong.textContent = "Correct!";
       score++;
-      scoreEl.textContent = "Your final score is: " + score;
     }
     // If incorrect say incorrect and subtract 10 seconds
     else {
       rightOrWrong.textContent = "Incorrect";
       secondsLeft = secondsLeft - 10;
     }
+    scoreEl.textContent = "Your final score is: " + score;
+
     // Add 1 to index to set up next question
     qIndex++;
 
